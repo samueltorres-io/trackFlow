@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Codificar Endereço</title>
+</head>
+<body>
+  <h2>Digite um Endereço</h2>
+  
+  <!-- Campo de entrada de endereço -->
+  <input type="text" id="endereco" placeholder="Digite o endereço...">
+
+  <!-- Botão para processar a entrada -->
+  <button onclick="processarEndereco()">Codificar Endereço</button>
+
+  <!-- Exibição do resultado codificado -->
+  <p>Endereço Codificado:</p>
+  <p id="resultado"></p>
+
+  <script>
+    // Função para formatar e codificar o endereço
+    function processarEndereco() {
+      // Obter o valor do campo de entrada
+      const enderecoUsuario = document.getElementById('endereco').value;
+      
+      // Remover espaços extras e garantir que haja apenas um espaço entre as palavras
+      let enderecoFormatado = enderecoUsuario.trim().replace(/\s+/g, ' ');  // Substitui múltiplos espaços por um único
+     
+      // Codificar a string para URL
+      let enderecoCodificado = encodeURIComponent(enderecoFormatado);
+      
+      // Exibir o resultado
+      document.getElementById('resultado').textContent = enderecoCodificado;
+
+      // Aqui você pode também usar esse endereço codificado para construir a URL da requisição
+      // Exemplo de URL:
+      // const url = `https://geocode.xyz/?region=BR&geoit=JSON&locate=${enderecoCodificado}&auth=1383418226983017451x25062`;
+    }
+  </script>
+</body>
+</html>
