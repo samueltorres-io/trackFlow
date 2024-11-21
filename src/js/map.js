@@ -1,12 +1,27 @@
 let map;
 let markers = [];
 
+// Espera até o DOM estar pronto para inicializar o mapa
+document.addEventListener('DOMContentLoaded', () => {
+    initializeMap();
+});
+
+// Função verifucação e inicialização do mapa
 export function initializeMap() {
-    map = L.map('map').setView([0, 0], 2); // Inicializa o mapa com um zoom global
+    // Verifica se o mapa já foi inicializado.
+    if(map) {
+        return; // Se já estiver inicializado, não faz nada.
+    }
+
+    // Futuramente, subir um random de cordenadas de pontos turísticos ao ivés de um fixo.
+    map = L.map('map').setView([51.505, -0.09], 13);
+
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; OpenStreetMap contributors',
     }).addTo(map);
+    
 }
+
 
 export function plotOnMap(addresses) {
     // Limpa os marcadores antigos
