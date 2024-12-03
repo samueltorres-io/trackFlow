@@ -1,0 +1,17 @@
+{
+  "name": "trackflow",
+  "version": "1.0.0",
+  "main": "index.js",
+  "start": "node app.js",
+  "dev": "nodemon app.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  },
+  "dependencies": {
+    "express": "^4.21.1"
+  }
+}
