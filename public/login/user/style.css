@@ -1,0 +1,8 @@
+body{
+    background: url(../src/img/bec2acb4-acbc-4429-a66e-7468d65d26f4.jpg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+}
