@@ -1,5 +1,8 @@
 body{
-    background: url(../src/img/bec2acb4-acbc-4429-a66e-7468d65d26f4.jpg);
+    background: url(../src/img/75d380dc-821b-4c2a-9552-3a2f538f77b6.jpg);
+    background-size: cover; /* Ajusta a imagem para cobrir toda a tela */
+    background-repeat: no-repeat; /* Evita que a imagem se repita */
+    background-position: center; /* Centraliza a imagem no fundo */
     display: flex;
     align-items: center;
     justify-content: center;

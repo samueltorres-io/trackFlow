@@ -13,40 +13,31 @@
 <body>
 
     <div class="container" id="container">
-        <div class="form-container sign-up">
-            <form>
+        <div class="form-container sign-in">
+            <form action="#" method="POST">
                 <h1>Criar Conta Corporativa</h1><br>
                 <span>ou use seu email para registro</span>
-                <input type="text" placeholder="Nome da empresa">
-                <input type="text" placeholder="CNPJ, EIN, VAT,..">
-                <input type="email" placeholder="Email">
-                <input type="password" placeholder="Senha">
-                <a href="../company/index.html">Área de Usuários</a>
-                <button>Criar Conta</button>
-            </form>
-        </div>
-        <div class="form-container sign-in">
-            <form>
-                <h1>Acessar Conta Corporativa</h1><br>
-                <span>ou use seu email e senha</span>
-                <input type="email" placeholder="Email">
-                <input type="password" placeholder="Senha">
-                <a href="#">Esqueceu sua Senha?</a>
+                <input type="text" placeholder="Razão Social" required>
+                <input type="text" placeholder="CNPJ" required>
+                <input type="number" placeholder="Quantidade de Funcionários" required>
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Senha" required>
                 <a href="../user/index.html">Área de Usuários</a>
-                <button>Acessar conta</button>
+                <button>Criar Conta</button>
             </form>
         </div>
         <div class="toggle-container">
             <div class="toggle">
-                <div class="toggle-panel toggle-left">
-                    <h1>Bem vindo novamente!</h1>
-                    <p>Acesse sua conta corporativa para gerenciar.</p>
-                    <button class="hidden" id="login">Acessar conta</button>
-                </div>
                 <div class="toggle-panel toggle-right">
                     <h1>Olá, bem vindo!</h1>
-                    <p>Registre sua empresa para obter todos os benefícios.</p>
-                    <button class="hidden" id="register">Criar conta</button>
+                    <p>Registre sua empresa e aproveite os benefícios do TrackFlow:</p>
+                    <ul style="text-align: left;">
+                        <li>Software intuitivo</li>
+                        <li>Otimização de rotas</li>
+                        <li>Gerenciamento de serviços</li>
+                        <li>Localização em tempo real</li>
+                    </ul>
+
                 </div>
             </div>
         </div>
