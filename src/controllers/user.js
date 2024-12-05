@@ -53,6 +53,47 @@ router.post('/register', [
     }
 });
 
+// Rota para realizar login
+router.post('/login', [
+    body('email').isEmail().withMessage('Email inválido').normalizeEmail(),
+    body('password').notEmpty().withMessage('Senha é obrigatória')
+], async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+
+    const { email, password } = req.body;
+
+    try {
+        // Verificar se o email existe no banco
+        const query = 'SELECT * FROM users WHERE email = ?';
+        connection.query(query, [email], async (err, results) => {
+            if (err) {
+                console.error('Erro ao consultar o banco:', err);
+                return res.status(500).json({ message: 'Erro no servidor.' });
+            }
+            if (results.length === 0) {
+                return res.status(401).json({ message: 'Credenciais inválidas.' });
+            }
+
+            const user = results[0];
+
+            // Comparar a senha fornecida com o hash armazenado
+            const isMatch = await bcrypt.compare(password, user.password_hash);
+            if (!isMatch) {
+                return res.status(401).json({ message: 'Credenciais inválidas.' });
+            }
+
+            // Sucesso: Enviar mensagem e status
+            res.status(200).json({ message: 'Login realizado com sucesso!' });
+        });
+    } catch (err) {
+        console.error('Erro inesperado:', err);
+        res.status(500).json({ message: 'Erro ao realizar login.' });
+    }
+});
+
 // Rota para atualizar um usuário
 // router.put('/:id', [
 //     body('name').optional().notEmpty().withMessage('Nome não pode ser vazio'),

@@ -22,6 +22,7 @@ app.use(bodyParser.json());
 
 // Rota para cadastro de usuários (usando o prefixo '/user')
 app.use('/user', userRoutes);
+app.use('/', userRoutes); // Ou outro prefixo, como '/user'
 
 // Definir o caminho do arquivo index.html
 app.get('/', (req, res) => {

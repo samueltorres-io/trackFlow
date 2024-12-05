@@ -71,6 +71,37 @@
     <script src="/login/src/js/script.js"></script>
 
     <script>
+        
+        // Login
+        document.getElementById('loginForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const email = document.getElementById('loginEmail').value.trim();
+            const password = document.getElementById('loginPassword').value.trim();
+
+            if (!validateEmail(email) || !password) {
+                alert("Por favor, preencha todos os campos corretamente.");
+                return;
+            }
+
+            try {
+                const response = await fetch('/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+
+                if (response.ok) {
+                    alert("Login realizado com sucesso!");
+                    window.location.href = "../map/map.html"; // Redireciona para a página `map.html`
+                } else {
+                    const error = await response.json();
+                    alert(error.message || "Erro ao acessar. Verifique suas credenciais.");
+                }
+            } catch (error) {
+                console.error("Erro ao enviar dados:", error);
+                alert("Erro ao conectar ao servidor.");
+            }
+        });
 
         // Validação e envio do formulário de registro
         document.getElementById('registerForm').addEventListener('submit', async (event) => {
