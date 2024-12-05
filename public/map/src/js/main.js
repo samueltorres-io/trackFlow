@@ -14,7 +14,6 @@ let routingControl = L.Routing.control({
 }).addTo(map);
 
 let addresses = [];
-console.log(addresses);
 
 // Adiciona um novo endereço
 document.getElementById('add-address').addEventListener('click', () => {
@@ -41,25 +40,14 @@ function renderAddressList() {
         .join('');
 }
 
-// Atualiza os endereços
-document.getElementById('address-list').addEventListener('input', async (event) => {
+// Atualiza os endereços no array sem geocodificar
+document.getElementById('address-list').addEventListener('input', (event) => {
     if (event.target.classList.contains('address-input')) {
         const index = event.target.closest('li').dataset.index;
         const rawAddress = event.target.value;
 
         // Atualiza o endereço no array
         addresses[index].rawAddress = rawAddress;
-
-        // Geocodifica e atualiza os waypoints
-        try {
-            const geocoded = await geocodeAddress(rawAddress);
-            addresses[index].lat = geocoded.lat;
-            addresses[index].lng = geocoded.lng;
-
-            updateWaypoints();
-        } catch (err) {
-            console.error(`Erro ao geocodificar: ${rawAddress}`);
-        }
     }
 });
 
@@ -69,15 +57,29 @@ document.getElementById('address-list').addEventListener('click', (event) => {
         const index = event.target.closest('li').dataset.index;
         addresses.splice(index, 1);
         renderAddressList();
-        updateWaypoints();
     }
 });
 
-// Atualiza os waypoints no mapa
-function updateWaypoints() {
-    const waypoints = addresses
-        .filter(addr => addr.lat && addr.lng) // Só considera endereços geocodificados
-        .map(addr => L.latLng(addr.lat, addr.lng));
+// Geocodifica e calcula a rota quando o botão é clicado
+document.getElementById('calculate-route').addEventListener('click', async () => {
+    const waypoints = [];
+    for (let i = 0; i < addresses.length; i++) {
+        const addr = addresses[i];
+        if (addr.rawAddress.trim()) {
+            try {
+                const geocoded = await geocodeAddress(addr.rawAddress);
+                addresses[i].lat = geocoded.lat;
+                addresses[i].lng = geocoded.lng;
+                waypoints.push(L.latLng(geocoded.lat, geocoded.lng));
+            } catch (error) {
+                console.error(`Erro ao geocodificar o endereço: ${addr.rawAddress}`);
+            }
+        }
+    }
 
-    routingControl.setWaypoints(waypoints);
-}
+    if (waypoints.length > 0) {
+        routingControl.setWaypoints(waypoints);
+    } else {
+        alert('Por favor, insira pelo menos um endereço válido.');
+    }
+});
