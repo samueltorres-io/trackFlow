@@ -4,13 +4,13 @@ const { body, validationResult } = require('express-validator');
 const router = express.Router();
 const connection = require('./db');
 
-// Função para hash de senha
+// Pegar as funções e criar classe User e trabalhar em cima dela. Company, Cummon, Employeer extends User.
+
 const hashPassword = async (password) => {
     const saltRounds = 10;
     return await bcrypt.hash(password, saltRounds);
 };
 
-// Rota para registrar um novo usuário
 router.post('/register', [
     body('name').notEmpty().withMessage('Nome é obrigatório'),
     body('email').isEmail().withMessage('Email inválido').normalizeEmail(),
@@ -53,7 +53,7 @@ router.post('/register', [
     }
 });
 
-// Rota para realizar login
+
 router.post('/login', [
     body('email').isEmail().withMessage('Email inválido').normalizeEmail(),
     body('password').notEmpty().withMessage('Senha é obrigatória')
@@ -66,7 +66,6 @@ router.post('/login', [
     const { email, password } = req.body;
 
     try {
-        // Verificar se o email existe no banco
         const query = 'SELECT * FROM users WHERE email = ?';
         connection.query(query, [email], async (err, results) => {
             if (err) {
@@ -79,13 +78,11 @@ router.post('/login', [
 
             const user = results[0];
 
-            // Comparar a senha fornecida com o hash armazenado
             const isMatch = await bcrypt.compare(password, user.password_hash);
             if (!isMatch) {
                 return res.status(401).json({ message: 'Credenciais inválidas.' });
             }
 
-            // Sucesso: Enviar mensagem e status
             res.status(200).json({ message: 'Login realizado com sucesso!' });
         });
     } catch (err) {
@@ -94,6 +91,7 @@ router.post('/login', [
     }
 });
 
+// Novas funções para gerenciamento por parte do user com perm. de Company e users comuns para dados.
 // Rota para atualizar um usuário
 // router.put('/:id', [
 //     body('name').optional().notEmpty().withMessage('Nome não pode ser vazio'),

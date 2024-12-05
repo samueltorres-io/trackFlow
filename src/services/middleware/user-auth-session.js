@@ -1,0 +1,1 @@
+// autenticação do user e suas permissões a cada página! Opçõesd do header acompanham as permissões.
