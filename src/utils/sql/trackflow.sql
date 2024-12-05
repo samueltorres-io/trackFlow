@@ -38,3 +38,39 @@ CREATE TABLE user_company (
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
     FOREIGN KEY (company_id) REFERENCES companies(id) ON DELETE CASCADE
 );
+
+
+
+
+
+
+
+INSERT INTO user_roles (id, role_name, permissions) VALUES
+(1, 'Admin', JSON_OBJECT(
+    'canManageEverything', true,
+    'canManageCompany', true,
+    'canCreateEmployees', true,
+    'canModifySimple', true,
+    'canAccessMaps', true
+)),
+(2, 'Company', JSON_OBJECT(
+    'canManageEverything', false,
+    'canManageCompany', true,
+    'canCreateEmployees', true,
+    'canModifySimple', false,
+    'canAccessMaps', false
+)),
+(3, 'Employee', JSON_OBJECT(
+    'canManageEverything', false,
+    'canManageCompany', false,
+    'canCreateEmployees', false,
+    'canModifySimple', true,
+    'canAccessMaps', true
+)),
+(4, 'Common', JSON_OBJECT(
+    'canManageEverything', false,
+    'canManageCompany', false,
+    'canCreateEmployees', false,
+    'canModifySimple', true,
+    'canAccessMaps', true
+));
