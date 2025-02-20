@@ -1,6 +1,0 @@
-Porque desenvolver esse produto/serviço?
-- Temos uma grande demanda em relação a logística nos dias atuais, mas boa parte das nossas ferramentas voltadas para empresas, são pagas e não são baratas. Por esse motivo, pretendo desenvolver o TrackFlow, um sistema completo e muito simples para uma melhor logística dureante o transporte, para o empregado e o empregador, focando em análise das melhores rotas, recursos como visualização em tempo real do empregado e outros recursos de geração de relatórios para o empregador, afim de facilitar, de forma barata com uma inscrição mensal, a parte logística do tranbsporte da empresa.
-
-Diferencial: A ideia de oferecer um serviço barato e eficiente pode ser um grande atrativo, pois muitas ferramentas de logística são caras e complexas.
-
-Voltado para pequenos e médios comércios

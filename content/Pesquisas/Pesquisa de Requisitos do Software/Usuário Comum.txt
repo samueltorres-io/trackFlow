@@ -1,3 +1,0 @@
-Como usuário comum, eu quero usar o sistema, mas tenho apenas 5 pontos, 1 de início, 3 de paradas e o ultimo de final do trajeto!
-
-NOTA: Isso é apenas para um user comum testar a aplicxação, de forma bem simples.

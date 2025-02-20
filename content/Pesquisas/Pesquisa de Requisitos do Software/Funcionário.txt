@@ -1,9 +1,0 @@
-Funcionário ( Como funcionário, quero poder ver minhas rotas, se há alguma rota já pronta.
-
-Quero ter meu usuário e senha.
-
-Se eu esuqecer minha senha, tenho que solicitar para alguém da empresa para alterar para min, pois apenas eles tem essa perm,issão.
-
-Quero ver as informações de entrega como tempo gasto entre cada ponto de entrega, e quero ver meus relatórios de entregas do dia.
-
-)
