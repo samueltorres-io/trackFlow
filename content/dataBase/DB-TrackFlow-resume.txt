@@ -25,3 +25,10 @@
 
 
 Isso atende ao MVP e permite evolução sem refatorações pesadas no futuro.
+
+Estrutura do Funcionário
+   Tabela employees (Funcionários)
+   Cada funcionário pertence a uma única empresa.
+   Identificador personalizado com no máximo 12 caracteres, podendo conter letras e números.
+   Senha com hash e salt.
+   Status de ativação para habilitar/desabilitar o funcionário sem removê-lo do banco.

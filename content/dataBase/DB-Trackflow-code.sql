@@ -44,3 +44,15 @@ CREATE TABLE company_support (
     support_id UUID REFERENCES support(id) ON DELETE CASCADE,
     subscribed_at TIMESTAMP DEFAULT NOW()
 );
+
+-------------------------------------------------------------------------
+
+CREATE TABLE employees (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    company_id UUID REFERENCES companies(id) ON DELETE CASCADE,
+    identifier VARCHAR(12) UNIQUE NOT NULL, -- Custom identifier chosen by the company
+    password_hash TEXT NOT NULL,
+    password_salt TEXT NOT NULL,
+    status BOOLEAN DEFAULT TRUE, -- Allows enabling/disabling the account
+    created_at TIMESTAMP DEFAULT NOW()
+);
