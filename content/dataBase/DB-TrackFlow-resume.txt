@@ -1,0 +1,27 @@
+## **📌 Análise e Melhorias**
+1. **Tabela `companies` (Empresas)**  
+   - Mantém os dados essenciais de autenticação.  
+   - Separação clara entre autenticação e informações detalhadas da empresa.  
+   - **Salt** armazenado para reforçar a segurança da senha.  
+
+2. **Tabela `company_details` (Detalhes da Empresa)**  
+   - Informações específicas como nome, CNPJ/CPF, telefones e endereço.  
+   - Telefones armazenados como **JSON**, permitindo flexibilidade.  
+
+3. **Tabela `plans` (Planos)**  
+   - Inclui nome do plano, valor e status.  
+   - **Campos JSON** para facilitar atualizações sem alterar a estrutura.  
+
+4. **Tabela `company_plans` (Associação Empresa ↔ Plano)**  
+   - Uma empresa pode ter um plano, e um plano pode pertencer a várias empresas.  
+   - Permite fácil migração de planos no futuro.  
+
+5. **Tabela `support` (Suporte)**  
+   - Define os tipos de suporte disponíveis.  
+   - Empresas escolhem o nível de suporte que desejam.  
+
+6. **Tabela `company_support` (Associação Empresa ↔ Suporte)**  
+   - Relaciona a empresa ao suporte contratado.  
+
+
+Isso atende ao MVP e permite evolução sem refatorações pesadas no futuro.
