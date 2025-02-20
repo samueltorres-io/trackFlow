@@ -1,0 +1,17 @@
+Para quem? Qual será meu público alvo?
+- Pequenas empresas que estão começando agora e precissão de um sistema simples, mas com recursos que vão direto ao ponto e realmente resolvem os problemas daquela empresa.
+
+ ++++ Sugestões de melhoria
+Dashboard Inteligente
+
+Exibir status dos entregadores, tempo médio de entrega e alertas de atrasos.
+Histórico de rotas para análise de eficiência.
+Notificações Automáticas
+
+Envio de mensagens quando um motorista sai para entrega ou conclui uma rota.
+Modo Offline
+
+Importante para áreas sem sinal de internet.
+API para integração
+
+Se quiser expandir o negócio, criar uma API para integrar com ERPs e outros sistemas.
