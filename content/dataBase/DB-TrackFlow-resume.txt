@@ -32,3 +32,9 @@ Estrutura do Funcionário
    Identificador personalizado com no máximo 12 caracteres, podendo conter letras e números.
    Senha com hash e salt.
    Status de ativação para habilitar/desabilitar o funcionário sem removê-lo do banco.
+
+Estrutura User Comum (Teste do sistema)
+   Aproveita a tabela companies para login sem precisar de outra tabela.
+   Fácil de escalar, pois cada tipo de usuário tem seus detalhes armazenados separadamente.
+   Vinculada a companies.id SOMENTE para usuários comuns.
+   Separada de company_details para manter a estrutura limpa.

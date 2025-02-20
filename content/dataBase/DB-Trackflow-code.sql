@@ -56,3 +56,13 @@ CREATE TABLE employees (
     status BOOLEAN DEFAULT TRUE, -- Allows enabling/disabling the account
     created_at TIMESTAMP DEFAULT NOW()
 );
+
+---------------------------------------------------------------------------
+
+CREATE TABLE user_details (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    user_id UUID UNIQUE REFERENCES companies(id) ON DELETE CASCADE,
+    first_name VARCHAR(32) NOT NULL,
+    last_name VARCHAR(128) NOT NULL,
+    phones JSONB, -- Stores multiple phone numbers as JSON
+);
